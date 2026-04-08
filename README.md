@@ -2,7 +2,7 @@
 
 ## CSV & PapaParse 
 
-A CSV file is just a plain text file where each line is a row of data and each value is separated by a comma; hence "comma-separated values." Weird, right? Browsers and JavaScript have no built in way to parse these cleanly, which is i think where PapaParse comes in. From my research and testing, PapaParse reads the file, splits it into rows, uses the first row as field names, and hands back a JavaScript array of objects where each object is one row and each key is a column name. The dynamicTyping: true option tells PapaParse to convert number strings into actual JavaScript numbers automatically — without it, "4850" stays a string and doing math on it produces NaN instead of a number, which would break every calculation in the dashboard. For my own environment, I also needed the download=true option. 
+A CSV file is just a plain text file where each line is a row of data and each value is separated by a comma; hence "comma-separated values." Weird, right? Browsers and JavaScript have no built in way to parse these cleanly, which is i think where PapaParse comes in. From my research and testing, PapaParse reads the file, splits it into rows, uses the first row as field names, and hands back a JavaScript array of objects where each object is one row and each key is a column name. The dynamicTyping: true option tells PapaParse to convert number strings into actual JavaScript numbers automatically as without it, "4850" stays a string and doing math on it produces NaN instead of a number, which would break every calculation in the dashboard. For my own environment, I also needed the download=true option as Edge enforced CORS in my Enterprise Environment and the solution was not quick enough for me. 
 
 ## KPI Calculation 
 
