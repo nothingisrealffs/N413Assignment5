@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Metro Report — Analytics Dashboard</title>
+
+  <!-- PapaParse: loads and parses CSV files -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <!-- Chart.js: draws bar charts, pie charts, line charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header>
+    <div class="header-left">
+      <h1>📰 The Metro Report</h1>
+      <p>Web Analytics Dashboard — Spring 2026</p>
+    </div>
+    <div class="header-right">
+      <!-- TASK 4: Your metric toggle buttons go here -->
+       <button id="btn-sessions" class="toggle-btn active">Sessions</button>
+       <button id="btn-revenue" class="toggle-btn">Revenue</button>
+    </div>
+  </header>
+
+
+  <!-- ── KPI CARDS ──────────────────────────────────────── -->
+  <!--
+    TASK 2: Fill in the correct id attributes on each kpi-value div.
+    Your dashboard.js will find these elements by id and insert the numbers.
+  -->
+  <div class="kpi-grid">
+
+    <div class="kpi-card">
+      <div class="kpi-label">Total Sessions</div>
+      <div class="kpi-value" id="kpi-sessions">—</div>
+      <div class="kpi-hint">All visits across all sources</div>
+    </div>
+
+    <div class="kpi-card amber">
+      <div class="kpi-label">Total Revenue</div>
+      <div class="kpi-value" id="kpi-revenue">—</div>
+      <div class="kpi-hint">Gross earnings Jan – Jun</div>
+    </div>
+
+    <div class="kpi-card green">
+      <div class="kpi-label">Avg Bounce Rate</div>
+      <div class="kpi-value" id="kpi-bounce">—</div>
+      <div class="kpi-hint">Lower is better</div>
+    </div>
+
+    <div class="kpi-card purple">
+      <div class="kpi-label">Avg Conversion Rate</div>
+      <div class="kpi-value" id="kpi-cvr">—</div>
+      <div class="kpi-hint">Higher is better</div>
+    </div>
+
+    <div class="kpi-card red">
+      <div class="kpi-label">Total Page Views</div>
+      <div class="kpi-value" id="kpi-pageviews">—</div>
+      <div class="kpi-hint">All pages viewed across visits</div>
+    </div>
+
+    <div class="kpi-card teal">
+      <div class="kpi-label">New Visitors</div>
+      <div class="kpi-value" id="kpi-newvisitors">—</div>
+      <div class="kpi-hint">First-time site visitors</div>
+    </div>
+
+  </div><!-- /kpi-grid -->
+
+
+  <!-- ── CHART ROW ──────────────────────────────────────── -->
+  <div class="chart-row">
+
+    <!-- TASK 3A: Sessions / Revenue Bar Chart -->
+    <div class="chart-card wide">
+      <div class="chart-card-header">
+        <h3 id="bar-chart-title">Sessions by Traffic Source</h3>
+      </div>
+      <canvas id="barChart" height="140"></canvas>
+    </div>
+
+    <!-- TASK 3B: Pie / Doughnut Chart -->
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <h3>Revenue Share by Source</h3>
+      </div>
+      <canvas id="pieChart" height="220"></canvas>
+    </div>
+
+  </div><!-- /chart-row -->
+
+
+  <!-- ── LINE CHART ─────────────────────────────────────── -->
+  <!-- TASK 3C: Sessions trend over the 6 months (one line per source) -->
+  <div class="chart-card full">
+    <div class="chart-card-header">
+      <h3>Monthly Sessions Trend by Source</h3>
+    </div>
+    <canvas id="lineChart" height="100"></canvas>
+  </div>
+
+
+  <!-- ── DATA TABLE ─────────────────────────────────────── -->
+  <!--
+    TASK 5: Your JavaScript will build the <tbody> rows dynamically.
+    Do not add rows here manually.
+  -->
+  <div class="table-card">
+    <div class="chart-card-header">
+      <h3>All Traffic Data</h3>
+      <select id="sourceFilter" class="source-filter"
+        title="Filter table by traffic source">
+        <option value="All">All Sources</option>
+        <option value="Organic">Organic</option>
+        <option value="Paid">Paid</option>
+        <option value="Email">Email</option>
+        <option value="Referral">Referral</option>
+        <option value="Social">Social</option>
+      </select>
+    </div>
+    <div class="table-wrapper">
+      <table id="dataTable">
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Source</th>
+            <th>Sessions</th>
+            <th>Revenue</th>
+            <th>Bounce Rate</th>
+            <th>Conv. Rate</th>
+            <th>Page Views</th>
+            <th>New Visitors</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- JS fills this in -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div><!-- /dashboard -->
+
+<!-- dashboard.js loaded at the bottom so HTML is ready first -->
+<script src="dashboard.js"></script>
+
+</body>
+</html>

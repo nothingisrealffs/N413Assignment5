@@ -1,0 +1,235 @@
+/* ============================================================
+   THE METRO REPORT — Analytics Dashboard
+   style.css  |  Assignment 5  |  Spring 2026
+   ============================================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  min-height: 100vh;
+  padding: 32px 24px;
+}
+
+/* --- Dashboard wrapper --- */
+.dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* --- Header --- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.header-left h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+.header-left p {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Toggle buttons (STEP 4) */
+.header-right button {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.header-right button:hover {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.header-right button.active {
+  background: #3b82f6;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+/* --- KPI Grid --- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.kpi-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 20px 22px;
+  border-top: 3px solid #3b82f6;
+}
+
+.kpi-card.amber  { border-top-color: #f59e0b; }
+.kpi-card.green  { border-top-color: #10b981; }
+.kpi-card.purple { border-top-color: #8b5cf6; }
+.kpi-card.red    { border-top-color: #ef4444; }
+.kpi-card.teal   { border-top-color: #06b6d4; }
+
+.kpi-label {
+  font-size: 10px;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin: 10px 0 5px;
+  line-height: 1;
+}
+
+.kpi-hint {
+  font-size: 11px;
+  color: #475569;
+}
+
+/* --- Chart Row (bar + pie side by side) --- */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 780px) {
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Chart Cards --- */
+.chart-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.chart-card.full {
+  width: 100%;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chart-card-header h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+/* --- Data Table --- */
+.table-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px 14px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #334155;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 10px 14px;
+  color: #cbd5e1;
+  border-bottom: 1px solid #1e293b;
+  white-space: nowrap;
+}
+
+tbody tr:hover td {
+  background: #263347;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Source badge colours in table */
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.badge-Organic  { background: #4f86c622; color: #4f86c6; }
+.badge-Paid     { background: #f59e0b22; color: #f59e0b; }
+.badge-Social   { background: #10b98122; color: #10b981; }
+.badge-Email    { background: #8b5cf622; color: #8b5cf6; }
+.badge-Referral { background: #ef444422; color: #ef4444; }
+
+/* Source filter dropdown */
+.source-filter {
+  background: #0f172a;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+
+.source-filter:focus {
+  border-color: #3b82f6;
+}
